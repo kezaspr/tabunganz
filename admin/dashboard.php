@@ -1,5 +1,9 @@
 <?php
-require_once '../auth/check_admin.php';
+session_start();
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: /auth/login.php");
+    exit;
+}
 ?>
 <h1>Dashboard Admin</h1>
 <p>Selamat datang, Admin</p>
